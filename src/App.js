@@ -40,6 +40,7 @@ function App() {
       // if the result is not ready so you make the axios call
       getData();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

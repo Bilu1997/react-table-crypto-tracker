@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { useTable, useFilters } from "react-table";
+import { useTable, useFilters, useGlobalFilter } from "react-table";
+import { GlobalFilter } from "../../components/GlobalFilter/GlobalFilter";
 
 export default function Table({ columns, data }) {
   // Use the useTable Hook to send the columns and data to build the table
@@ -8,7 +9,6 @@ export default function Table({ columns, data }) {
   const [filterInput, setFilterInput] = useState("");
   const handleFilterChange = (e) => {
     const value = e.target.value || undefined;
-    setFilter("show.name", value); // Update the show.name filter. Now our table will filter and show only the rows which have a matching value
     setFilterInput(value);
   };
 
@@ -19,48 +19,54 @@ export default function Table({ columns, data }) {
     rows, // rows for the table based on the data passed
     prepareRow, // Prepare the row (this function needs to be called for each row before getting the row props)
     setFilter,
+    state,
+    setGlobalFilter,
   } = useTable(
     {
       columns,
       data,
     },
-    useFilters // Adding the useFilters Hook to the table
+    useFilters, // Adding the useFilters Hook to the table
     // You can add as many Hooks as you want. Check the documentation for details. You can even add custom Hooks for react-table here
+    useGlobalFilter
   );
-
+  const { globalFilter } = state;
   /* 
     Render the UI for your table
     - react-table doesn't have UI, it's headless. We just need to put the react-table props from the Hooks, and it will do its magic automatically
   */
   return (
-    <table {...getTableProps()}>
-      <thead>
-        {headerGroups.map((headerGroup) => (
-          <tr {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map((column) => (
-              <th {...column.getHeaderProps()}>{column.render("Header")}</th>
-            ))}
-          </tr>
-        ))}
-      </thead>
-      <tbody {...getTableBodyProps()}>
-        {rows.map((row, i) => {
-          prepareRow(row);
-          return (
-            <tr {...row.getRowProps()}>
-              {row.cells.map((cell) => {
-                return (
-                  <td {...cell.getCellProps()}>
-                    {typeof cell === "number"
-                      ? cell.render("Cell").toFixed(2)
-                      : cell.render("Cell")}
-                  </td>
-                );
-              })}
+    <>
+      <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
+      <table {...getTableProps()}>
+        <thead>
+          {headerGroups.map((headerGroup) => (
+            <tr {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map((column) => (
+                <th {...column.getHeaderProps()}>{column.render("Header")} </th>
+              ))}
             </tr>
-          );
-        })}
-      </tbody>
-    </table>
+          ))}
+        </thead>
+        <tbody {...getTableBodyProps()}>
+          {rows.map((row, i) => {
+            prepareRow(row);
+            return (
+              <tr {...row.getRowProps()}>
+                {row.cells.map((cell) => {
+                  return (
+                    <td {...cell.getCellProps()}>
+                      {typeof cell === "number"
+                        ? cell.render("Cell").toFixed(2)
+                        : cell.render("Cell")}
+                    </td>
+                  );
+                })}
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </>
   );
 }
