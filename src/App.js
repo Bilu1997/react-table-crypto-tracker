@@ -5,6 +5,7 @@ import Table from "./components/Table/Table";
 
 function App() {
   const [loadingData, setLoadingData] = useState(true);
+  const [color, setColor] = useState("red");
   const columns = useMemo(() => [
     {
       Header: "Name",
@@ -16,11 +17,18 @@ function App() {
     },
     {
       Header: "Last 24h %",
-      accessor: (a) => +a.price_change_percentage_24h.toFixed(2) + "%",
+      id: "price_change_percentage_24h",
+      Cell: (coin) => (
+        <span className={coin.value > 0 ? "green" : "red"}>{coin.value}</span>
+      ),
+      accessor: (coin) => coin.price_change_percentage_24h.toFixed(2),
     },
     {
       Header: "Last 24h zł",
-      accessor: (a) => +a.price_change_24h.toFixed(2) + "zł",
+      Cell: (coin) => (
+        <span className={coin.value > 0 ? "green" : "red"}>{coin.value}zł</span>
+      ),
+      accessor: (coin) => +coin.price_change_24h.toFixed(2),
     },
   ]);
 
@@ -45,13 +53,15 @@ function App() {
 
   return (
     <>
-      <div className="App">
-        {/* here you check if the state is loading otherwise if you wioll not call that you will get a blank page because the data is an empty array at the moment of mounting */}
-        {loadingData ? (
-          <p>Loading Please wait...</p>
-        ) : (
-          <Table columns={columns} data={data} />
-        )}
+      <div className="background__container">
+        <div className="table__container">
+          {/* here you check if the state is loading otherwise if you wioll not call that you will get a blank page because the data is an empty array at the moment of mounting */}
+          {loadingData ? (
+            <p>Loading Please wait...</p>
+          ) : (
+            <Table columns={columns} data={data} />
+          )}
+        </div>
       </div>
     </>
   );

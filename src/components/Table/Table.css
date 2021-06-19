@@ -1,0 +1,15 @@
+.table__container {
+  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.table__row {
+  width: 200px;
+}
+
+.table__column {
+  height: 30px;
+}

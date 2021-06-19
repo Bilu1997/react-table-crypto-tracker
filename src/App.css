@@ -1,0 +1,17 @@
+.background__container {
+  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: rgb(148, 255, 42);
+}

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { useTable, useFilters, useGlobalFilter } from "react-table";
+import { useTable, useFilters, useGlobalFilter, useSortBy } from "react-table";
 import { GlobalFilter } from "../../components/GlobalFilter/GlobalFilter";
+import "./Table.css";
 
 export default function Table({ columns, data }) {
   // Use the useTable Hook to send the columns and data to build the table
@@ -11,6 +12,9 @@ export default function Table({ columns, data }) {
     const value = e.target.value || undefined;
     setFilterInput(value);
   };
+
+  // Create a default prop getter
+  const defaultPropGetter = () => ({});
 
   const {
     getTableProps, // table props from react-table
@@ -28,13 +32,15 @@ export default function Table({ columns, data }) {
     },
     useFilters, // Adding the useFilters Hook to the table
     // You can add as many Hooks as you want. Check the documentation for details. You can even add custom Hooks for react-table here
-    useGlobalFilter
+    useGlobalFilter,
+    useSortBy
   );
   const { globalFilter } = state;
   /* 
     Render the UI for your table
     - react-table doesn't have UI, it's headless. We just need to put the react-table props from the Hooks, and it will do its magic automatically
   */
+
   return (
     <>
       <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
@@ -43,7 +49,18 @@ export default function Table({ columns, data }) {
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps()}>{column.render("Header")} </th>
+                <th
+                  {...column.getHeaderProps(column.getSortByToggleProps())}
+                  className={
+                    column.isSorted
+                      ? column.isSortedDesc
+                        ? "sort-desc"
+                        : "sort-asc"
+                      : ""
+                  }
+                >
+                  {column.render("Header")}{" "}
+                </th>
               ))}
             </tr>
           ))}
