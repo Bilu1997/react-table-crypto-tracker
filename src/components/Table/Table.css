@@ -1,15 +1,46 @@
 .table__container {
-  max-width: 1200px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
+  border-spacing: 0;
 }
 
-.table__row {
+.table__header {
   width: 200px;
+  padding: 8px 0px;
+  border-bottom: 3px solid #000;
+  border-top: 3px solid #000;
+}
+
+.table__header::after {
+  content: "▲▼";
 }
 
 .table__column {
   height: 30px;
+}
+
+.table__row {
+  border-bottom: 2px solid #000;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: rgb(148, 255, 42);
+}
+
+.sort-desc {
+  width: 200px;
+}
+
+.sort-desc::after {
+  content: "▼";
+}
+
+.sort-asc {
+  width: 200px;
+}
+
+.sort-asc::after {
+  content: "▲";
 }

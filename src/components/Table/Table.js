@@ -44,7 +44,7 @@ export default function Table({ columns, data }) {
   return (
     <>
       <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
-      <table {...getTableProps()}>
+      <table {...getTableProps()} className="table__container">
         <thead>
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
@@ -54,9 +54,9 @@ export default function Table({ columns, data }) {
                   className={
                     column.isSorted
                       ? column.isSortedDesc
-                        ? "sort-desc"
-                        : "sort-asc"
-                      : ""
+                        ? "sort-desc table__header"
+                        : "sort-asc table__header"
+                      : "table__header table__header"
                   }
                 >
                   {column.render("Header")}{" "}
@@ -72,7 +72,7 @@ export default function Table({ columns, data }) {
               <tr {...row.getRowProps()}>
                 {row.cells.map((cell) => {
                   return (
-                    <td {...cell.getCellProps()}>
+                    <td {...cell.getCellProps()} className="table__row">
                       {typeof cell === "number"
                         ? cell.render("Cell").toFixed(2)
                         : cell.render("Cell")}
