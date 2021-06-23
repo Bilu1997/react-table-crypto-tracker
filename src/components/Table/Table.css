@@ -1,5 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Rokkitt&display=swap");
+
 .table__container {
   border-spacing: 0;
+  font-family: "Rokkitt", serif;
+  font-size: 1.2rem;
 }
 
 .table__header {
@@ -19,6 +23,7 @@
 
 .table__row {
   border-bottom: 2px solid #000;
+  padding: 6px 0px;
 }
 
 .red {

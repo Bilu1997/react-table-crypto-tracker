@@ -11,6 +11,7 @@ function App() {
     {
       Header: "Image",
       accessor: "image",
+      disableSorting: true,
       Cell: ({ cell: { value } }) => <img src={value} width={30} />,
     },
     {
