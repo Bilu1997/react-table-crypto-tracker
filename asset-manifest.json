@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/react-table-crypto-tracker/static/css/main.09c08b28.chunk.css",
+    "main.js": "/react-table-crypto-tracker/static/js/main.a00b41b1.chunk.js",
+    "main.js.map": "/react-table-crypto-tracker/static/js/main.a00b41b1.chunk.js.map",
+    "runtime-main.js": "/react-table-crypto-tracker/static/js/runtime-main.e567db33.js",
+    "runtime-main.js.map": "/react-table-crypto-tracker/static/js/runtime-main.e567db33.js.map",
+    "static/js/2.685906f6.chunk.js": "/react-table-crypto-tracker/static/js/2.685906f6.chunk.js",
+    "static/js/2.685906f6.chunk.js.map": "/react-table-crypto-tracker/static/js/2.685906f6.chunk.js.map",
+    "static/js/3.f437d268.chunk.js": "/react-table-crypto-tracker/static/js/3.f437d268.chunk.js",
+    "static/js/3.f437d268.chunk.js.map": "/react-table-crypto-tracker/static/js/3.f437d268.chunk.js.map",
+    "index.html": "/react-table-crypto-tracker/index.html",
+    "static/css/main.09c08b28.chunk.css.map": "/react-table-crypto-tracker/static/css/main.09c08b28.chunk.css.map",
+    "static/js/2.685906f6.chunk.js.LICENSE.txt": "/react-table-crypto-tracker/static/js/2.685906f6.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e567db33.js",
+    "static/js/2.685906f6.chunk.js",
+    "static/css/main.09c08b28.chunk.css",
+    "static/js/main.a00b41b1.chunk.js"
+  ]
+}
