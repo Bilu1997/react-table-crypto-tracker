@@ -3,6 +3,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import axios from "axios";
 import Table from "./components/Table/Table";
 import { FaBeer } from "react-icons/fa";
+import Banner from "./components/Banner/Banner";
 
 function App() {
   const [loadingData, setLoadingData] = useState(true);
@@ -69,12 +70,14 @@ function App() {
   return (
     <>
       <div className="background__container">
-        {/* here you check if the state is loading otherwise if you wioll not call that you will get a blank page because the data is an empty array at the moment of mounting */}
-        {loadingData ? (
-          <p>Loading Please wait...</p>
-        ) : (
-          <Table columns={columns} data={data} />
-        )}
+        <div className="background__wrapper">
+          {/* here you check if the state is loading otherwise if you wioll not call that you will get a blank page because the data is an empty array at the moment of mounting */}
+          {loadingData ? (
+            <p>Loading Please wait...</p>
+          ) : (
+            <Table columns={columns} data={data} />
+          )}
+        </div>
       </div>
     </>
   );

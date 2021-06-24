@@ -2,4 +2,10 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  padding: 24px 0px;
+}
+.input__search {
+  height: 40px;
+  width: 300px;
+  font-size: 1.5rem;
 }

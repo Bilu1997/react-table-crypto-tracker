@@ -4,6 +4,8 @@
   border-spacing: 0;
   font-family: "Rokkitt", serif;
   font-size: 1.2rem;
+  color: #fff;
+  background: #525252;
 }
 
 .table__header {
@@ -27,7 +29,7 @@
 }
 
 .red {
-  color: red;
+  color: rgb(255, 24, 24);
 }
 
 .green {
