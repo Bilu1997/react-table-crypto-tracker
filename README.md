@@ -1,3 +1,4 @@
+Link to page: https://bilu1997.github.io/react-table-crypto-tracker/
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
